@@ -25,8 +25,8 @@ La base de données MySQL contient trois tables principales :
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/exam-attendance-api.git
-   cd exam-attendance-api
+   git clone https://github.com/sebmouad/exam-attendance.git
+   cd exam-attendance
    ```
 
 2. Installez les dépendances :
@@ -82,14 +82,14 @@ La base de données MySQL contient trois tables principales :
 - **Modifier un élève**
   ```bash
   curl -X PUT https://exam-attendance.vercel.app/eleve/1 -H "Content-Type: application/json" -d '{
-    "Nom": "Doe",
-    "Prenom": "John",
-    "Date_Naissance": "2000-01-01",
+    "Nom": "Sebhaoui",
+    "Prenom": "Mouad",
+    "Date_Naissance": "1990-01-01",
     "CIN": "ABC123",
     "CNE": "123456",
     "Filiere_Bac": "Scientifique",
     "Mention_Bac": "Bien",
-    "Annee_Bac": "2018",
+    "Annee_Bac": "2012",
     "Filiere": "Informatique"
   }'
   ```
@@ -101,7 +101,7 @@ La base de données MySQL contient trois tables principales :
 
 - **Chercher un élève par nom ou prénom**
   ```bash
-  curl https://exam-attendance.vercel.app/eleve/nom_prenom?nom=Doe&prenom=John
+  curl https://exam-attendance.vercel.app/eleve/nom_prenom?nom=Sebhaoui&prenom=Mouad
   ```
 
 - **Chercher un élève par CIN ou CNE**
