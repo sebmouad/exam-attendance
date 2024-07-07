@@ -10,6 +10,43 @@ const port = process.env.PORT || 3000;
 app.use(cors()); // Activer CORS pour accepter toutes les origines
 app.use(express.json()); // Pour parser les requêtes avec JSON
 
+// Route racine pour afficher un message simple
+app.get('/', (req, res) => {
+  res.send('Bienvenue à l\'API de gestion des présences aux examens');
+});
+
+// Route pour afficher la liste des élèves
+app.get('/eleves', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM Eleve');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Route pour afficher la liste des examens
+app.get('/examens', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM Examen');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Route pour afficher la liste des enregistrements de présence
+app.get('/exampresence', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM ExamenPresence');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Les autres routes pour ajouter, modifier et supprimer des élèves et des examens...
+
 // Route pour ajouter un élève
 app.post('/eleve', async (req, res) => {
   const { Nom, Prenom, Date_Naissance, CIN, CNE, Filiere_Bac, Mention_Bac, Annee_Bac, Filiere } = req.body;
