@@ -67,14 +67,14 @@ La base de données MySQL contient trois tables principales :
 - **Ajouter un élève**
   ```bash
   curl -X POST https://exam-attendance.vercel.app/eleve -H "Content-Type: application/json" -d '{
-    "Nom": "Doe",
-    "Prenom": "John",
-    "Date_Naissance": "2000-01-01",
+    "Nom": "Sebhaoui",
+    "Prenom": "Mouad",
+    "Date_Naissance": "1990-01-01",
     "CIN": "ABC123",
     "CNE": "123456",
     "Filiere_Bac": "Scientifique",
     "Mention_Bac": "Bien",
-    "Annee_Bac": "2018",
+    "Annee_Bac": "2012",
     "Filiere": "Informatique"
   }'
   ```
