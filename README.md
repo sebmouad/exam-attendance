@@ -1,5 +1,5 @@
 
-# Exam Attendance
+# Exam Attendance API
 
 Ce projet est une application API développée pour enregistrer la présence des élèves aux examens en scannant leurs codes QR ou code BAR via une application mobile. Il est utilisé comme projet de fin d'études L3DEV pour l'école ISMAGI.
 
@@ -25,8 +25,8 @@ La base de données MySQL contient trois tables principales :
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/sebmouad/exam-attendance.git
-   cd exam-attendance
+   git clone https://github.com/votre-utilisateur/exam-attendance-api.git
+   cd exam-attendance-api
    ```
 
 2. Installez les dépendances :
@@ -50,11 +50,23 @@ La base de données MySQL contient trois tables principales :
 
 ## Routes de l'API
 
+### Racine
+
+- **Afficher un message de bienvenue**
+  ```bash
+  curl https://exam-attendance.vercel.app/
+  ```
+
 ### Eleve
+
+- **Afficher la liste des élèves**
+  ```bash
+  curl https://exam-attendance.vercel.app/eleves
+  ```
 
 - **Ajouter un élève**
   ```bash
-  curl -X POST http://localhost:3000/eleve -H "Content-Type: application/json" -d '{
+  curl -X POST https://exam-attendance.vercel.app/eleve -H "Content-Type: application/json" -d '{
     "Nom": "Doe",
     "Prenom": "John",
     "Date_Naissance": "2000-01-01",
@@ -69,7 +81,7 @@ La base de données MySQL contient trois tables principales :
 
 - **Modifier un élève**
   ```bash
-  curl -X PUT http://localhost:3000/eleve/1 -H "Content-Type: application/json" -d '{
+  curl -X PUT https://exam-attendance.vercel.app/eleve/1 -H "Content-Type: application/json" -d '{
     "Nom": "Doe",
     "Prenom": "John",
     "Date_Naissance": "2000-01-01",
@@ -84,29 +96,34 @@ La base de données MySQL contient trois tables principales :
 
 - **Supprimer un élève**
   ```bash
-  curl -X DELETE http://localhost:3000/eleve/1
+  curl -X DELETE https://exam-attendance.vercel.app/eleve/1
   ```
 
 - **Chercher un élève par nom ou prénom**
   ```bash
-  curl http://localhost:3000/eleve/nom_prenom?nom=Doe&prenom=John
+  curl https://exam-attendance.vercel.app/eleve/nom_prenom?nom=Doe&prenom=John
   ```
 
 - **Chercher un élève par CIN ou CNE**
   ```bash
-  curl http://localhost:3000/eleve/cin_cne?cin=ABC123&cne=123456
+  curl https://exam-attendance.vercel.app/eleve/cin_cne?cin=ABC123&cne=123456
   ```
 
 - **Afficher les informations d'un élève par son CNE**
   ```bash
-  curl http://localhost:3000/eleve/cne/123456
+  curl https://exam-attendance.vercel.app/eleve/cne/123456
   ```
 
 ### Examen
 
+- **Afficher la liste des examens**
+  ```bash
+  curl https://exam-attendance.vercel.app/examens
+  ```
+
 - **Ajouter un examen**
   ```bash
-  curl -X POST http://localhost:3000/examen -H "Content-Type: application/json" -d '{
+  curl -X POST https://exam-attendance.vercel.app/examen -H "Content-Type: application/json" -d '{
     "Matiere": "Mathématiques",
     "Lieu": "Salle 101",
     "Date": "2024-07-10",
@@ -117,7 +134,7 @@ La base de données MySQL contient trois tables principales :
 
 - **Modifier un examen**
   ```bash
-  curl -X PUT http://localhost:3000/examen/1 -H "Content-Type: application/json" -d '{
+  curl -X PUT https://exam-attendance.vercel.app/examen/1 -H "Content-Type: application/json" -d '{
     "Matiere": "Mathématiques",
     "Lieu": "Salle 101",
     "Date": "2024-07-10",
@@ -128,29 +145,34 @@ La base de données MySQL contient trois tables principales :
 
 - **Supprimer un examen**
   ```bash
-  curl -X DELETE http://localhost:3000/examen/1
+  curl -X DELETE https://exam-attendance.vercel.app/examen/1
   ```
 
 - **Chercher un examen par matière**
   ```bash
-  curl http://localhost:3000/examen/matiere?matiere=Mathématiques
+  curl https://exam-attendance.vercel.app/examen/matiere?matiere=Mathématiques
   ```
 
 - **Chercher un examen par lieu**
   ```bash
-  curl http://localhost:3000/examen/lieu?lieu=Salle 101
+  curl https://exam-attendance.vercel.app/examen/lieu?lieu=Salle 101
   ```
 
 - **Chercher un examen par date**
   ```bash
-  curl http://localhost:3000/examen/date?date=2024-07-10
+  curl https://exam-attendance.vercel.app/examen/date?date=2024-07-10
   ```
 
 ### Présence
 
+- **Afficher la liste des enregistrements de présence**
+  ```bash
+  curl https://exam-attendance.vercel.app/exampresence
+  ```
+
 - **Enregistrer la présence d'un élève à un examen**
   ```bash
-  curl -X POST http://localhost:3000/presence -H "Content-Type: application/json" -d '{
+  curl -X POST https://exam-attendance.vercel.app/presence -H "Content-Type: application/json" -d '{
     "ID_Exam": 1,
     "ID_Eleve": 1,
     "Heure_Presence": "09:05"
